@@ -25,7 +25,7 @@ public class Jump : MonoBehaviour
     {
         if(isJumping)
         {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0,10), ForceMode2D.Impulse);
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(0,8), ForceMode2D.Impulse);
             isJumping = false;
         }
     }

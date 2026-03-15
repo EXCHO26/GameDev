@@ -4,24 +4,44 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    Rigidbody2D rb2d;
-    float horizontal = -1;
+    public float speed;
+    public int startPoint;
+    public Transform[] points;
 
-    [SerializeField] float speed = 2;
-
+    private int i;
     void Start()
     {
-        rb2d = GetComponent<Rigidbody2D>();
+        transform.position = points[startPoint].position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb2d.velocity = new Vector2(horizontal * speed, rb2d.velocity.y);
+        if (Vector2.Distance(transform.position, points[i].position) < 0.2f)
+        {
+            i++;
+            if (i == points.Length)
+            {
+                i = 0;
+            }
+        }
+
+        transform.position = Vector2.MoveTowards(transform.position, points[i].position, speed * Time.deltaTime);
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        horizontal *= -1;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+           collision.gameObject.transform.SetParent(transform);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.transform.SetParent(null);
+        }
     }
 }

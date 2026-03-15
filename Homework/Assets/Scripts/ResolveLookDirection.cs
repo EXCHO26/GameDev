@@ -21,7 +21,7 @@ public class ResolveLookDirection : MonoBehaviour
             return;
         }
 
-        float horizontal_velocity = rb2d.velocity.x;
+        float horizontal_velocity = rb2d.linearVelocity.x;
         if (Abs(horizontal_velocity) > 0.01f)
         {
             float look_direction = (horizontal_velocity > 0) ? 1 : -1;
