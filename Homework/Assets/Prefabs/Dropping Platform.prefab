@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 749166652239123560}
   - component: {fileID: 4324407951490498420}
   - component: {fileID: 711363521574022196}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Dropping Platform
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

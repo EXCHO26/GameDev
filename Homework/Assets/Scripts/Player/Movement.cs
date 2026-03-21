@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    float horizontal;
+    private float horizontal;
+    private Animator animator;
 
     [SerializeField]
     float speed;
@@ -13,6 +14,8 @@ public class Movement : MonoBehaviour
     {
         horizontal = 0;
         speed = 5;
+
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -22,6 +25,8 @@ public class Movement : MonoBehaviour
     }
     void FixedUpdate(){
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = new Vector2(horizontal * speed,rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
+
+        animator.SetFloat("speed", Mathf.Abs(horizontal));
     }
 }

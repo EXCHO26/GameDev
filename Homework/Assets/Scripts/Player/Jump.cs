@@ -6,10 +6,13 @@ public class Jump : MonoBehaviour
 {
     bool isJumping = false;
     bool isOnGround = false;
+
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -23,10 +26,19 @@ public class Jump : MonoBehaviour
 
     void FixedUpdate() 
     {
-        if(isJumping)
+        if (isJumping)
         {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0,8), ForceMode2D.Impulse);
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 8), ForceMode2D.Impulse);
             isJumping = false;
+        }
+        
+        if (!isOnGround)
+        {
+            animator.SetBool("isGrounded", false);
+        }
+        else
+        {
+            animator.SetBool("isGrounded", true);
         }
     }
 
