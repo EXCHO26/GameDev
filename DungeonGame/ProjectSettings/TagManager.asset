@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
@@ -12,14 +12,14 @@ TagManager:
   - Water
   - UI
   - 
+  - UnderGround
+  - MiddleGround
+  - UpperGround
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Layer 1
+  - Layer 2
+  - Layer 3
   - 
   - 
   - 
@@ -41,3 +41,23 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 2425651459
+    locked: 0
+  - name: Floor
+    uniqueID: 4250941897
+    locked: 0
+  - name: Objects
+    uniqueID: 4189426099
+    locked: 0
+  - name: 
+    uniqueID: 1719140405
+    locked: 0
+  - name: 
+    uniqueID: 3954743019
+    locked: 0
+  - name: UI
+    uniqueID: 2765245541
+    locked: 0
+  m_RenderingLayers:
+  - Default
