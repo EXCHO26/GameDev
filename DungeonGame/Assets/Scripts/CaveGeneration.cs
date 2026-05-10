@@ -28,6 +28,7 @@ public class CaveTilemapGenerator : MonoBehaviour
     public int spawnRadius = 3;
     public GameObject playerSpawner;
     public GameObject player;
+    public EntitySpawner entitySpawner;
 
     private int[,] map;
 
@@ -52,6 +53,11 @@ public class CaveTilemapGenerator : MonoBehaviour
         DrawMap();
 
         PlacePlayer();
+
+        if(entitySpawner)
+        {
+            entitySpawner.PopulateCave(map, width, height);
+        }
     }
 
     void RandomFillMap()
