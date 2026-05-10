@@ -28,7 +28,6 @@ public class Teleport : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             playerInside = true;
-            Debug.Log("Teleporting in 3 seconds...");
         }
     }
 
@@ -38,7 +37,6 @@ public class Teleport : MonoBehaviour
         {
             playerInside = false;
             timer = 0f;
-            Debug.Log("Teleport cancelled.");
         }
     }
 
