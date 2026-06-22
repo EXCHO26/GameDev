@@ -6,15 +6,16 @@ public class Health : MonoBehaviour, IDamageable
     [SerializeField] private int maxHealth = 100;
     private int currentHealth;
     private bool isDead = false;
-    private HealthBarController uiHealthBar;
 
+    [Header("Events")]
+    public UnityEvent<int, int> onHealthChanged; 
     public UnityEvent onHit;
     public UnityEvent onDeath;
 
     void Start()
     {
         currentHealth = maxHealth;
-        uiHealthBar = FindFirstObjectByType<HealthBarController>();
+        onHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
     public void TakeDamage(int damageAmount)
@@ -22,38 +23,14 @@ public class Health : MonoBehaviour, IDamageable
         if (isDead) return;
 
         currentHealth -= damageAmount;
-        Debug.Log($"{gameObject.name} health: {currentHealth}");
 
-        if (uiHealthBar)
-        {
-            uiHealthBar.UpdateHealth(currentHealth);
-        }
-
-        onHit.Invoke();
+        onHealthChanged?.Invoke(currentHealth, maxHealth);
+        onHit?.Invoke();
 
         if (currentHealth <= 0)
         {
-            Die();
+            isDead = true;
+            onDeath?.Invoke();
         }
-    }
-
-    private void Die()
-    {
-        isDead = true;
-        
-        if (TryGetComponent<EntityController>(out var controller))
-        {
-            controller.enabled = false;
-        }
-            
-        if (TryGetComponent<Rigidbody2D>(out var rb))
-        {
-            rb.linearVelocity = Vector2.zero;
-
-        }
-            
-        onDeath.Invoke(); 
-
-        Destroy(gameObject, 2f);
     }
 }
