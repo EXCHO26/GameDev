@@ -33,4 +33,14 @@ public class Health : MonoBehaviour, IDamageable
             onDeath?.Invoke();
         }
     }
+
+    public void AddHealth(int healAmount)
+    {
+        if (isDead) return;
+
+        currentHealth += healAmount;
+
+        currentHealth = Mathf.Min(currentHealth, maxHealth);
+        onHealthChanged?.Invoke(currentHealth, maxHealth);
+    }
 }

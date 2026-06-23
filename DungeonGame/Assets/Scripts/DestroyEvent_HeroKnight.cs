@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DestroyEvent_HeroKnight : MonoBehaviour
 {
-        public void destroyEvent()
+    public void destroyEvent()
     {
         Destroy(gameObject);
     }

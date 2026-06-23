@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7479207744493707971}
   - component: {fileID: 5932677404593539920}
   - component: {fileID: 7491372164690041728}
-  - component: {fileID: 4368664582035380692}
+  - component: {fileID: 4509853442361035226}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Enemy
@@ -172,7 +172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkeletonController
   m_speed: 2
-  player: {fileID: 0}
   chaseRadius: 3
   attackRadius: 1
 --- !u!50 &7479207744493707971
@@ -248,8 +247,8 @@ MonoBehaviour:
           m_StringArgument: Dead
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4368664582035380692}
-        m_TargetAssemblyTypeName: EnemyDeathHandler, Assembly-CSharp
+      - m_Target: {fileID: 4509853442361035226}
+        m_TargetAssemblyTypeName: EnemyDeath, Assembly-CSharp
         m_MethodName: HandleDeath
         m_Mode: 1
         m_Arguments:
@@ -276,7 +275,7 @@ MonoBehaviour:
   rewardType: {fileID: 11400000, guid: bd6fe054587b2424a9b59e2248b6ad91, type: 2}
   minAmount: 1
   maxAmount: 5
---- !u!114 &4368664582035380692
+--- !u!114 &4509853442361035226
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -287,7 +286,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f44ab2ec532c8c246a81755aaff16637, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyDeathHandler
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDeath
+  spawner: {fileID: 0}
+  prefabOrigin: {fileID: 0}
 --- !u!1 &1368357789342895261
 GameObject:
   m_ObjectHideFlags: 0
