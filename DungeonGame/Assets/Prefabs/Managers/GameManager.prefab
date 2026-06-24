@@ -44,4 +44,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8fe54af89fffd49b1188015ea7d077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  pauseMenuScript: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  deadMenu: {fileID: 0}
+  inventory: {fileID: 11400000, guid: c927381381ec8d94a855b9679b992076, type: 2}
+  allPossibleResources:
+  - {fileID: 11400000, guid: bd6fe054587b2424a9b59e2248b6ad91, type: 2}
+  - {fileID: 11400000, guid: 5f676ea52b53d0c438fb11a47579e8e1, type: 2}
+  allAbilities:
+  - ability: {fileID: 11400000, guid: 46989cb80d9b6d24880c2a72c4162081, type: 2}
+    currentLevel: 0
+    lastUsedTime: 0
+  - ability: {fileID: 11400000, guid: d65e853281e2f394aa892c24bd2c0157, type: 2}
+    currentLevel: 0
+    lastUsedTime: 0
+  - ability: {fileID: 11400000, guid: 4281bb00c95056c4a860efa608de8b8a, type: 2}
+    currentLevel: 0
+    lastUsedTime: 0

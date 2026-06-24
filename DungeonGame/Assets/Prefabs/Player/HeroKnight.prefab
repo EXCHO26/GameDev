@@ -263,6 +263,18 @@ MonoBehaviour:
           m_StringArgument: Dead
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 9117128348835321587}
+        m_TargetAssemblyTypeName: UnityEngine.BoxCollider2D, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Dead
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1761551073089470441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HeroKnight
   m_speed: 4
+  currentAttackDamage: 0
 --- !u!114 &5578329269715743735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,10 +302,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AbilityController
   myHeroData: {fileID: 11400000, guid: abfe549055b8fc04bbb11b47d4d51659, type: 2}
-  abilities:
-  - ability: {fileID: 11400000, guid: d65e853281e2f394aa892c24bd2c0157, type: 2}
-    currentLevel: 1
+  basicAttack:
+    ability: {fileID: 0}
+    currentLevel: 0
     lastUsedTime: 0
+  abilities: []
+  abilitySlot1UI: {fileID: 0}
+  abilitySlot2UI: {fileID: 0}
 --- !u!1 &8199965599071745026
 GameObject:
   m_ObjectHideFlags: 0

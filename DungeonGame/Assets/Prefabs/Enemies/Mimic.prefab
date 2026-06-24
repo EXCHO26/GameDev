@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28d07e602353ee7479030dc3ff0a771a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 20
+  maxHealth: 100
   onHealthChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -300,6 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossDeath
   portalPrefab: {fileID: 7947911505737750455, guid: c5bdca1933fde624698bb8c6d6daa44b,
     type: 3}
+  deathDelay: 2
 --- !u!1 &8104135310484307760
 GameObject:
   m_ObjectHideFlags: 0

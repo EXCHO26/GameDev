@@ -54,30 +54,8 @@ public class AbilityController : MonoBehaviour
 
     void Start()
     {
-        if (myHeroData)
-        {
-            if (myHeroData.basicAttackAsset != null)
-            {
-                basicAttack = new ActiveAbility(myHeroData.basicAttackAsset);
-            }
-        
-            foreach (var abilityAsset in myHeroData.startingAbilities)
-            {
-                abilities.Add(new ActiveAbility(abilityAsset));
-            }
-
-            if (abilities.Count >= 2 && abilitySlot1UI)
-            {
-                if (abilitySlot1UI)
-                {
-                    abilitySlot1UI.Setup(abilities[0]);
-                }
-                if (abilitySlot2UI)
-                {
-                    abilitySlot2UI.Setup(abilities[1]);
-                }
-            }
-        }
+        FillAbilities();
+        UpdateUI();
     }
 
     void Update()
@@ -86,7 +64,7 @@ public class AbilityController : MonoBehaviour
         {
             TryUseAbility(basicAttack);
         }
-        
+
         if (Input.GetKeyDown(KeyCode.Q) && abilities.Count > 0)
         {
             TryUseAbility(abilities[0]);
@@ -100,14 +78,98 @@ public class AbilityController : MonoBehaviour
 
     }
 
+    public void UpdateUI()
+    {
+        if (abilities.Count >= 2)
+        {
+            if (abilitySlot1UI) abilitySlot1UI.Setup(abilities[0]);
+            if (abilitySlot2UI) abilitySlot2UI.Setup(abilities[1]);
+        }
+    }
+    
+    public void FillAbilities()
+    {
+        if (myHeroData)
+        {
+            abilities.Clear();
+
+            if (myHeroData.basicAttackAsset != null)
+            {
+                basicAttack = new ActiveAbility(myHeroData.basicAttackAsset);
+            }
+
+            foreach (var abilityAsset in myHeroData.startingAbilities)
+            {
+                abilities.Add(new ActiveAbility(abilityAsset));
+            }
+        }
+    }
+
     void TryUseAbility(ActiveAbility activeAbility)
     {
         float cooldown = activeAbility.ability.levels[activeAbility.currentLevel - 1].cooldown;
-        
+
         if (Time.time >= activeAbility.lastUsedTime + cooldown)
         {
             activeAbility.ability.Activate(gameObject, activeAbility.currentLevel);
             activeAbility.lastUsedTime = Time.time;
         }
+    }
+
+    public List<AbilitySaveData> GetAbilitySaveData()
+    {
+        List<AbilitySaveData> saveDataList = new List<AbilitySaveData>();
+
+        if (basicAttack != null && basicAttack.ability != null)
+        {
+            saveDataList.Add(new AbilitySaveData { 
+                abilityName = basicAttack.ability.name, 
+                currentLevel = basicAttack.currentLevel 
+            });
+        }
+
+        if (abilities != null)
+        {
+            foreach (ActiveAbility ability in abilities)
+            {
+                if (ability != null && ability.ability != null)
+                {
+                    saveDataList.Add(new AbilitySaveData { 
+                        abilityName = ability.ability.name, 
+                        currentLevel = ability.currentLevel 
+                    });
+                }
+            }
+        }
+
+        return saveDataList;
+    }
+    
+    public void LoadSavedAbilities(List<AbilitySaveData> savedAbilities)
+    {
+        FillAbilities();
+
+        foreach (AbilitySaveData saved in savedAbilities)
+        {
+            if (basicAttack != null && basicAttack.ability != null && basicAttack.ability.name == saved.abilityName)
+            {
+                basicAttack.currentLevel = saved.currentLevel;
+                continue;
+            }
+
+            if (abilities != null)
+            {
+                for (int i = 0; i < abilities.Count; i++)
+                {
+                    if (abilities[i] != null && abilities[i].ability != null && abilities[i].ability.name == saved.abilityName)
+                    {
+                        abilities[i].currentLevel = saved.currentLevel;
+                        break;
+                    }
+                }
+            }
+        }
+
+        UpdateUI();
     }
 }

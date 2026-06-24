@@ -1124,18 +1124,6 @@ MonoBehaviour:
   target: {fileID: 842143831}
   lerpSpeed: 3
   fixedZ: -10
---- !u!114 &1508528192 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2562968436914237709, guid: f5b0ec2659fa88f41abb4bdceeb76ac1,
-    type: 3}
-  m_PrefabInstance: {fileID: 8017079711785915901}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 508380224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae5212bbc2e81bc42b1deee99db43f67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
 --- !u!114 &1523957836 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2213054199475852530, guid: f5b0ec2659fa88f41abb4bdceeb76ac1,
@@ -1382,14 +1370,9 @@ PrefabInstance:
       objectReference: {fileID: 508380224}
     - target: {fileID: 2684909064770740544, guid: fe10e63ed6334d34a93c8e027f30ff98,
         type: 3}
-      propertyPath: pauseMenuUI
+      propertyPath: abilityController
       value: 
-      objectReference: {fileID: 508380224}
-    - target: {fileID: 2684909064770740544, guid: fe10e63ed6334d34a93c8e027f30ff98,
-        type: 3}
-      propertyPath: pauseMenuScript
-      value: 
-      objectReference: {fileID: 1508528192}
+      objectReference: {fileID: 1922357004}
     - target: {fileID: 4371304149600081292, guid: fe10e63ed6334d34a93c8e027f30ff98,
         type: 3}
       propertyPath: m_Name

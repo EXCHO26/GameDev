@@ -24,6 +24,11 @@ public class InventoryModel : ScriptableObject
         return _resources.ContainsKey(resource) ? _resources[resource] : 0;
     }
 
+    public Dictionary<ResourceData, int> GetAllResources()
+    {
+        return _resources;
+    }
+
     public void Clear()
     {
         _resources.Clear();
@@ -52,6 +57,40 @@ public class InventoryModel : ScriptableObject
         foreach (UpgradeCost cost in costs)
         {
             RemoveResource(cost.resource, cost.amount);
+        }
+    }
+
+    public List<ResourceSaveData> GetInventorySaveData()
+    {
+        List<ResourceSaveData> saveDataList = new List<ResourceSaveData>();
+        
+        foreach (KeyValuePair<ResourceData, int> kvp in _resources)
+        {
+            if (kvp.Key != null)
+            {
+                saveDataList.Add(new ResourceSaveData 
+                { 
+                    resourceName = kvp.Key.name, 
+                    amount = kvp.Value 
+                });
+            }
+        }
+        
+        return saveDataList;
+    }
+
+    public void LoadSavedInventory(List<ResourceSaveData> savedResources, List<ResourceData> allPossibleResources)
+    {
+        Clear();
+
+        foreach (ResourceSaveData savedRes in savedResources)
+        {
+            ResourceData matchingResource = allPossibleResources.Find(r => r != null && r.name == savedRes.resourceName);
+            
+            if (matchingResource != null)
+            {
+                AddResource(matchingResource, savedRes.amount);
+            }
         }
     }
     
